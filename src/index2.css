@@ -1,0 +1,146 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 33% 98%; /* Light blue background from image */
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 247 64% 61%; /* Based on the purple in the image */
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 183 74% 44%; /* Turquoise from image */
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 141 31% 53%; /* Mint green from image */
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 247 64% 61%;
+
+    --radius: 1.5rem; /* Increased border radius for rounder components */
+
+    --sidebar-background: 247 64% 61%; /* Purple sidebar */
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 0 0% 100%;
+    --sidebar-primary-foreground: 247 64% 61%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 247 64% 70%;
+    --sidebar-ring: 247 64% 61%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 247 64% 61%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 183 74% 44%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 141 31% 53%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+.badge {
+  @apply inline-flex items-center justify-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none;
+}
+
+.badge-primary {
+  @apply bg-inlustro-purple text-white shadow hover:bg-inlustro-purple/80;
+}
+
+.badge-secondary {
+  @apply bg-inlustro-mint text-foreground shadow hover:bg-inlustro-mint/80;
+}
+
+.badge-outline {
+  @apply border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground;
+}
+
+.progress-bar {
+  @apply h-2 w-full overflow-hidden rounded-full bg-muted;
+}
+
+.progress-bar-value {
+  @apply h-full rounded-full bg-inlustro-purple transition-all;
+}
+
+.lesson-card {
+  @apply relative overflow-hidden rounded-3xl border bg-card p-5 shadow-inlustro transition-all hover:shadow-lg;
+}
+
+.stats-card {
+  @apply flex flex-col space-y-1.5 rounded-3xl border bg-card p-6 shadow-inlustro;
+}
+
+/* New styles for modern UI */
+.inlustro-container {
+  @apply mx-auto w-full max-w-7xl px-4;
+}
+
+.inlustro-card {
+  @apply rounded-3xl bg-white shadow-inlustro border-0 overflow-hidden;
+}
+
+.inlustro-button-primary {
+  @apply bg-inlustro-purple text-white rounded-full px-6 py-2 font-medium hover:bg-inlustro-purple/90 transition-colors;
+}
+
+.inlustro-button-secondary {
+  @apply bg-inlustro-mint text-white rounded-full px-6 py-2 font-medium hover:bg-inlustro-mint/90 transition-colors;
+}
+
+.inlustro-input {
+  @apply rounded-full border-inlustro-gray/20 focus:border-inlustro-purple focus:ring-1 focus:ring-inlustro-purple;
+}

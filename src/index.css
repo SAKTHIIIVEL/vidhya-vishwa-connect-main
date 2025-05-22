@@ -1,0 +1,261 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+
+    --radius: 0.5rem;
+
+    /* Sidebar colors adjusted for blue/white theme */
+    --sidebar-background: 240 4.8% 97%; /* Lighter blueish gray */
+    --sidebar-foreground: 240 10% 20%;   /* Darker blue for text */
+    --sidebar-primary: 240 5.9% 10%;    /* Primary blue */
+    --sidebar-primary-foreground: 0 0% 98%; /* White text on primary */
+    --sidebar-accent: 240 4.8% 90%;     /* Light blue accent */
+    --sidebar-accent-foreground: 240 5.9% 10%; /* Primary blue for text on accent */
+    --sidebar-border: 240 5.9% 85%;     /* Slightly darker blue-gray border */
+    --sidebar-ring: 220 90% 50%;       /* A distinct blue for ring, adjust if needed */
+  }
+
+  .dark {
+    /* Dark mode: For now, we'll keep existing dark mode, 
+       but ideally this would also be blue/white themed.
+       The user requested overall blue/white, focusing on light mode first. */
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    
+    /* Dark Sidebar colors - can be refined later */
+    --sidebar-background: 240 10% 10%; /* Dark blue */
+    --sidebar-foreground: 0 0% 90%;   /* Light gray text */
+    --sidebar-primary: 220 90% 60%;    /* Brighter blue for primary in dark mode */
+    --sidebar-primary-foreground: 0 0% 100%; /* White text */
+    --sidebar-accent: 240 10% 15%;     /* Slightly lighter dark blue accent */
+    --sidebar-accent-foreground: 0 0% 90%; /* Light gray text */
+    --sidebar-border: 240 10% 20%;     /* Darker blue border */
+    --sidebar-ring: 220 90% 50%;       /* Ring color */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-nunito;
+    background: linear-gradient(to right, #00078d, #7786D9, #5467BC, #050609); /* Added gradient background */
+  }
+}
+
+/* Custom button styles - updated for blue/white theme */
+.edu-btn {
+  @apply rounded-lg px-6 py-2.5 font-semibold transition-all duration-200 shadow-sm;
+}
+
+.edu-btn-blue { /* Uses primary blue by default */
+  @apply bg-primary text-primary-foreground hover:bg-opacity-90 active:bg-opacity-80;
+}
+
+.edu-btn-green { /* Changed to a secondary blue */
+  @apply bg-secondary text-secondary-foreground hover:bg-opacity-90 active:bg-opacity-80;
+}
+
+.edu-btn-orange { /* Changed to an accent blue or light gray */
+  @apply bg-accent text-accent-foreground hover:bg-opacity-90 active:bg-opacity-80;
+}
+
+/* Custom card styles */
+.edu-card {
+  @apply bg-card shadow-md rounded-xl overflow-hidden border border-gray-100; /* border-gray-100 might need to become var(--border) */
+}
+
+/* Custom input styles - updated for blue/white theme */
+.edu-input {
+  @apply rounded-lg border border-input px-4 py-3 focus:outline-none focus:ring-2 transition-all duration-200;
+}
+
+.edu-input-blue { /* Uses ring color for focus */
+  @apply focus:ring-ring focus:border-ring;
+}
+
+.edu-input-green { /* Changed to use ring color as well, or a secondary ring color if defined */
+  @apply focus:ring-ring focus:border-ring; /* Or define a --secondary-ring */
+}
+
+.edu-input-orange { /* Changed to use ring color */
+  @apply focus:ring-ring focus:border-ring; /* Or define an --accent-ring */
+}
+
+/* ... keep existing code (Authentication related animations, hover-float, new animations, parallax, etc.) */
+/* Authentication related animations */
+.auth-animate-in {
+  animation: fadeSlideIn 0.4s ease-out forwards;
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hover-float {
+  transition: transform 0.3s ease;
+}
+
+.hover-float:hover {
+  transform: translateY(-5px);
+}
+
+/* New animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+@keyframes pulse-gentle {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+}
+
+.animate-pulse-gentle {
+  animation: pulse-gentle 3s ease-in-out infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease-out forwards;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Parallax effect */
+.parallax {
+  position: relative;
+  overflow: hidden;
+}
+
+.parallax-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  transition: transform 0.5s cubic-bezier(.17,.67,.83,.67);
+  z-index: -1;
+}
+
+/* Gradient text - edu-green is now a light blue */
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-edu-blue to-edu-green;
+}
+
+/* Link hover effect - uses edu-blue which is primary */
+.link-hover {
+  @apply relative inline-block;
+}
+
+.link-hover:after {
+  @apply content-[''] absolute w-full scale-x-0 h-0.5 bg-edu-blue bottom-0 left-0 origin-bottom-right transition-transform duration-300;
+}
+
+.link-hover:hover:after {
+  @apply scale-x-100 origin-bottom-left;
+}
+
+/* Card hover effects */
+.card-hover {
+  @apply transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg;
+}
+
+/* Image highlight effect - edu-blue is primary */
+.image-highlight {
+  @apply relative overflow-hidden;
+}
+
+.image-highlight:after {
+  @apply content-[''] absolute inset-0 bg-gradient-to-tr from-edu-blue/20 to-transparent opacity-0 transition-opacity duration-300;
+}
+
+.image-highlight:hover:after {
+  @apply opacity-100;
+}
+
