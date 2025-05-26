@@ -12,7 +12,7 @@ const AppSidebar = () => {
 
   const navItems = [
     {
-      path: '/dashboard/admin',
+      path: '/dashboard/tutor',
       label: 'Dashboard',
       icon: <Home className="h-4 w-4" />,
     },

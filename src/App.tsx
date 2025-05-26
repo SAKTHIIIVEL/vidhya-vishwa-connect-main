@@ -54,7 +54,7 @@ const App = () => {
 
             {/* Protected/Dashboard Routes under Layout */}
             <Route element={<Layout />}>
-              <Route path="/dashboard/admin" element={<Dashboard />} />
+              <Route path="/dashboard/tutor" element={<Dashboard />} />
               <Route path="/exam-preparation" element={<ExamPreparation />} />
               <Route path="/teachers" element={<Teachers />} />
               <Route path="/submissions" element={<Submissions />} />
