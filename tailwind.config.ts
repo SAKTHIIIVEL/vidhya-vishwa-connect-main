@@ -88,11 +88,11 @@ export default {
 				},
 				edu: {
 					blue: "#1E65F3", // Main accent blue
-					green: "#A0D2DB", // Changed to a light blue/cyan
-					orange: "#D6EAF8", // Changed to a very light blue
+					green: "#8cc7d1", // Changed to a light blue/cyan
+					orange: "#b8d3e6", // Changed to a very light blue
 					lightBlue: "#E1EFFE", // Kept as a light blue
-					lightGreen: "#E7F5F7", // Derived from new edu.green
-					lightOrange: "#F4F9FC"  // Derived from new edu.orange
+					lightGreen: "#c8effa", // Derived from new edu.green
+					lightOrange: "#bde6fc"  // Derived from new edu.orange
 				}
 			},
 			borderRadius: {

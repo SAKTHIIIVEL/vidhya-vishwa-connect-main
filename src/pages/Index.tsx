@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { School, User, BookOpen, ScrollText, Award, Calendar, Bell, Image, BookOpen as BookOpenIcon, Sparkles, Rocket, Brain, Lightbulb, GraduationCap, Atom } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X } from 'lucide-react';
 
 // Lazy load heavy animation components for better performance
 const SolarSystem = lazy(() => import('@/components/animations/SolarSystem'));
@@ -14,6 +15,7 @@ import EducationalIcons from '@/components/animations/EducationalIcons';
 import ColorfulBackground from '@/components/animations/ColorfulBackground';
 
 const Index = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
   const fadeIn = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
@@ -75,55 +77,70 @@ const Index = () => {
 
       {/* Header */}
       <header className="bg-white/90 backdrop-blur-sm shadow-sm py-4 sticky top-0 z-50">
-        <div className="container mx-auto px-4 flex justify-between items-center">
-          <motion.div 
-            initial={{ x: -20, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            className="flex items-center"
-          >
+      <div className="container mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-0">
+        
+        {/* Logo + Title */}
+        <motion.div 
+          initial={{ x: -20, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="flex items-center w-full sm:w-auto justify-between"
+        >
+          <div className="flex items-center">
             <motion.img 
               src="/logo.png.jpg" 
               alt="InLustro Logo" 
-              className="h-10 w-10 mr-2 object-contain"
+              className="h-10 w-10 mr-2 object-cover rounded-full"
               whileHover={{ rotate: 360, scale: 1.1 }}
               transition={{ duration: 0.8 }}
             />
             <motion.h1 
               className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-500"
-              animate={{ 
-                backgroundPosition: ['0% center', '100% center', '0% center'],
-              }}
+              animate={{ backgroundPosition: ['0% center', '100% center', '0% center'] }}
               transition={{ duration: 8, repeat: Infinity }}
             >
               Inlustro
             </motion.h1>
-          </motion.div>
-          <motion.div 
-            initial={{ x: 20, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="space-x-2"
-          >
-            <Link to="/login/student">
-              <Button variant="outline" size="sm" className="border-edu-orange text-edu-orange hover:bg-edu-lightOrange hover:scale-105 transition-transform">
-                <motion.span
-                  animate={{ scale: [1, 1.05, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                >
-                  Student Login
-                </motion.span>
-              </Button>
-            </Link>
-            <Link to="/login/tutor">
-              <Button variant="outline" size="sm" className="border-edu-green text-edu-green hover:bg-edu-lightGreen hover:scale-105 transition-transform">Tutor Login</Button>
-            </Link>
-            <Link to="/login/admin">
-              <Button className="bg-gradient-to-r from-edu-blue to-blue-600 hover:from-blue-600 hover:to-edu-blue hover:scale-105 transition-all duration-300" size="sm">Admin</Button>
-            </Link>
-          </motion.div>
-        </div>
-      </header>
+          </div>
+
+          {/* Menu Toggle Icon for Mobile */}
+          <div className="sm:hidden">
+            <button onClick={() => setMenuOpen(!menuOpen)}>
+              {menuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
+        </motion.div>
+
+        {/* Login Buttons */}
+        <motion.div 
+          initial={{ x: 20, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className={`flex-col sm:flex sm:flex-row gap-2 ${menuOpen ? 'flex' : 'hidden'} sm:flex`}
+        >
+          <Link to="/login/student">
+            <Button variant="outline" size="sm" className="w-full sm:w-auto border-edu-blue text-blue-600 hover:bg-edu-lightOrange hover:scale-105 transition-transform">
+              <motion.span
+                animate={{ scale: [1, 1.05, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
+                Student Login
+              </motion.span>
+            </Button>
+          </Link>
+          <Link to="/login/tutor">
+            <Button variant="outline" size="sm" className="w-full sm:w-auto border-edu-blue text-blue-600 hover:bg-edu-lightGreen hover:scale-105 transition-transform">
+              Tutor Login
+            </Button>
+          </Link>
+          <Link to="/login/admin">
+            <Button size="sm" className="w-full sm:w-auto bg-gradient-to-r from-edu-blue to-blue-600 hover:from-blue-600 hover:to-edu-blue hover:scale-105 transition-all duration-300">
+              Admin
+            </Button>
+          </Link>
+        </motion.div>
+      </div>
+    </header>
 
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-indigo-50 via-blue-50 to-sky-50 py-16 md:py-24 overflow-hidden z-10">
@@ -237,7 +254,7 @@ const Index = () => {
               transition={{ delay: 1.5 }}
             >
               <Link to="/login/student">
-                <Button className="bg-gradient-to-r from-edu-orange to-orange-500 hover:from-orange-500 hover:to-edu-orange text-white shadow-lg hover:shadow-orange-200/50 transition-all duration-300 group">
+                <Button className="bg-gradient-to-tl from-edu-orange to-orange-500 hover:from-orange-500 hover:to-edu-orange text-white shadow-lg hover:shadow-orange-200/50 transition-all duration-300 group">
                   <motion.span
                     className="flex items-center"
                     whileHover={{ scale: 1.05 }}

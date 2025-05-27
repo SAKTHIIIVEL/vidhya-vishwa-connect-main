@@ -89,7 +89,10 @@ const Header = () => {
               </Link>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Log out</DropdownMenuItem>
+            <DropdownMenuItem><Link to="/" className="flex w-full items-center">
+                <User className="mr-2 h-4 w-4" />
+                Log out
+              </Link></DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
